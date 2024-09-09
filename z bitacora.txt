@@ -1,0 +1,7 @@
+Usuarios
+
+* Tenemos 4 tipos de Usuarios
+  1. Programador. Tiene acceso a todo
+  2. Administrador. Acceso a ciertos modulos
+  3. Host. Acceso solo a modulo de registro
+  4. Lobby. Solo acceso a visualizar
