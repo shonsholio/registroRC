@@ -2,7 +2,7 @@ import express from 'express'
 const router = express.Router()
 
 router.get('/', (req,res) => {
-  res.send('NO HEMOS OLVIDADO TANTO')
+  res.render('landing.ejs')
 })
 
 export { router }
