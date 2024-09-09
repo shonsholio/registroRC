@@ -1,8 +1,7 @@
 import express from 'express'
 const router = express.Router()
+import { controller } from '../controllers/mainController.js'
 
-router.get('/', (req,res) => {
-  res.render('landing.ejs')
-})
+router.get('/', controller.landing)
 
 export { router }
