@@ -2,8 +2,11 @@ Usuarios
 
 * Tenemos 4 tipos de Usuarios
   1. Programador. Tiene acceso a todo
-  2. Administrador. Acceso a ciertos modulos
-  3. Host. Acceso solo a modulo de registro
+  2. Administrador. Acceso a ciertos modulos. 
+  3. Host. Acceso solo a modulo de registro. IMPORTANTE - Son los únicos que necesitan registrarse
   4. Lobby. Solo acceso a visualizar
 
 Vamos a crear primero la landing page, basicamente es para que las personas se registren y/o se loggeen. Vamos a conectar la db con mongo. Tengamos en cuenta para la parte gráfica, que es una app que probablemente se use mas en moviles que en computador.
+
+LOGIN
+* Al momento de intentar hacer login, debe verificarse que el correo sea valido y que la contraseña tambien
