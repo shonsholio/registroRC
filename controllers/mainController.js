@@ -1,4 +1,5 @@
 const controller = {}
+import { UserRepository } from "../user-repository.js"
 
 controller.landing = (req, res) => {
   res.render('landing.ejs')
@@ -6,6 +7,17 @@ controller.landing = (req, res) => {
 
 controller.registro = (req, res) => {
   res.render('registro')
+}
+
+controller.registrar = (req, res) => {
+  const { nombre, celular, email, pass, confirmPass } = req.body
+
+  try {
+    const id = UserRepository.create ({ nombre, celular, email, pass })
+    res.redirect('/')
+  } catch (error) {
+      console.error(error.message)
+  }
 }
 
 controller.login = (req, res) => {
