@@ -13,11 +13,11 @@ const __dirname = dirname(_filename)
 
 dotenv.config({ path: './config.env' })
 
-// mongoose.connect(process.env.MONGODB_URI)
-//   .then(connection => {
-//     console.log('Tamos mongueaos')
-//   })
-//   .catch('ERROR conectando a Mongo')
+mongoose.connect(process.env.MONGODB_URI)
+  .then(connection => {
+    console.log('Tamos mongueaos')
+  })
+  .catch('ERROR conectando a Mongo')
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
