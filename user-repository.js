@@ -1,5 +1,5 @@
 import mongoose, { mongo } from "mongoose";
-import crypto from 'crypto';
+import crypto, { checkPrimeSync } from 'crypto';
 import bcrypt from 'bcryptjs'
 
 const UserScheme = new mongoose.Schema({
@@ -7,6 +7,7 @@ const UserScheme = new mongoose.Schema({
   nombre: { type: String, required: true },
   celular: { type: String, required: true },
   email: { type: String, required: true },
+  apto: { type: String, required: true },
   pass: { type: String, required: true }
 })
 
@@ -15,7 +16,7 @@ export default host
 
 export class UserRepository {
 
-  static create ({ nombre, celular, email, pass }) {
+  static create ({ nombre, celular, email, apto, pass }) {
     const id = crypto.randomUUID()
     const hashedPass = bcrypt.hashSync(pass, 4)
 
@@ -23,9 +24,18 @@ export class UserRepository {
       _id: id,
       nombre,
       celular,
+      apto,
       email,
       pass: hashedPass
     })
+  }
+  
+}
+
+export class VerificaUsuario {
+
+  static verifica ({ email, pass }) {
+    
   }
 
 }

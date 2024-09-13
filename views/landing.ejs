@@ -1,13 +1,20 @@
 <%- include('partials/_header') %>
 
-  <form action="/login" method="POST" > 
-    <p>BIENVENIDO</p>
-    <input name="email" placeholder="e-mail" >
-    <input name="pass" placeholder="Contraseña" >
-    <button type="submit">Ingresar</button>
-  </form>
 
-  <a href="/registro">Registrarme</a>
+  <div class="d-flex col-8">
+
+    <form action="/login" method="POST"> 
+      
+      <p class="d-block">BIENVENIDO</p>
+      <p class="d-block">Registro de Rentas Cortas</p>
+  
+      <input name="email" placeholder="e-mail" type="email" class="d-block" >
+      <input name="pass" placeholder="Contraseña" type="password" class="d-block">
+      <button type="submit" class="d-block">Ingresar</button>
+      <button class="d-block"><a href="/registro">Crear una cuenta</a></button>
+    </form>
+  </div>
+
 
 </body>
 </html> 

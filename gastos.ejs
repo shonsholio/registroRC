@@ -1,0 +1,161 @@
+<%- include('partials/_header') %>
+
+  <!-- ENCABEZADO -->
+  <div class="text-center">
+
+    <p class="display-4">JAUSSERS CRM</p>
+    <p class="display-6"><%= propiedad %></p>
+
+    <button class="btn btn-info"><a class="text-white text-decoration-none" href="/" >Volver</a></button>
+
+  </div>
+
+  <!-- DATOS SOBRE GASTOS -->
+  <div class="d-flex align-items-center gap-4 justify-content-center">
+
+   <!-- MODULO GASTOS POR APARTAMENTO -->
+   <div id="formulario" class="d-flex card p-3 justify-content-center">
+  
+    <form action="/dataXpense" method="post">
+  
+      <div class="d-block">
+        <label for="apto">Apartamento</label>
+        <select name="apto">Apartamento
+          <option value="jaussers">Todo Jaussers</option>
+          <option value="409">Ciudad Jardin</option>
+          <option value="306A">Granadillo</option>
+          <option value="501A">La Campiña</option>
+          <option value="510">Mirador 510</option>
+          <option value="702">Mirador 702</option>
+        </select>
+      </div>
+  
+      <div class="d-block">
+        <label for="inicio" >Fecha de Inicio</label>
+        <input name="inicio" type="date">
+      </div>
+  
+      <div class="d-block">
+        <label for="final">Fecha Final</label>
+        <input name="final" type="date">
+      </div>
+  
+      <button class="btn btn-info text-white" type="submit" >TRABAJAR</button>
+    </form>
+
+  </div>
+
+
+    <!-- FORMULARIO REGISTRO DE GASTOS -->
+    <form action="/newExpense" method="post" class="card text-center p-5 mt-4">
+  
+      <div class="d-block">
+        <label for="fecha">Fecha</label>
+        <input name="fecha" type="date" required>
+      </div>
+    
+      <div class="d-block">
+        <label for="propiedad">Apartamento</label>
+        <select name="propiedad" required>
+          <option value="409">Ciudad Jardin</option>
+          <option value="306A">Granadillo</option>
+          <option value="501A">La Campiña</option>
+          <option value="510">Mirador 510</option>
+          <option value="702">Mirador 702</option>
+        </select>
+      </div>
+  
+      <div class="d-block">
+        <label for="tipoGasto">Tipo de Gasto</label>
+        <select name="tipoGasto" required>
+          <option value="Renta">Renta</option>
+          <option value="Servicios">Servicios</option>
+          <option value="Mantenimiento">Mantenimiento</option>
+          <option value="Aseo">Aseo</option>
+          <option value="Impuesto">Impuesto</option>
+        </select>
+      </div>
+  
+      <div class="d-block">
+        <label for="valorGasto">Valor</label>
+        <input name="valorGasto" type="number" required>
+      </div>
+  
+      <div class="d-block">
+        <label for="descripcion">Descripción</label>
+        <input name="descripcion" type="text" required>
+      </div>
+  
+      <button type="submit" class="btn btn-info text-white">Añadir Gasto</button>
+  
+    </form>
+  
+    <!-- GASTOS POR MES -->
+    <div class="card">
+      <ul class="card text-center p-3 list-group list-group-flush"> 
+        <li class="list-group-item" >Junio= $ <%= gastosPorMes.junio.toLocaleString() %></li>
+        <li class="list-group-item" >Mayo= $ <%= gastosPorMes.mayo.toLocaleString() %></li>
+        <li class="list-group-item" >Abril= $ <%= gastosPorMes.abril.toLocaleString() %></li>
+        <li class="list-group-item" >Marzo= $ <%= gastosPorMes.marzo.toLocaleString() %></li>
+        <li class="list-group-item" >Febrero= $ <%= gastosPorMes.febrero.toLocaleString() %></li>
+        <li class="list-group-item" >Enero= $ <%= gastosPorMes.enero.toLocaleString() %></li>
+      </ul>
+    </div>
+
+
+    
+  </div>
+
+  <!-- BASE DE DATOS DE GASTOS -->
+  <table class="table table-dark table-hover mt-3 text-center">
+    <tr>
+      <th>Fecha</th>
+      <th>Propiedad</th>
+      <th>Tipo de Gasto</th>
+      <th>Valor</th>
+      <th>Descripción</th>
+      <th>B</th>
+      <th>E</th>
+    </tr>
+
+    <% for (i = 0; i < gastos.length; ++i) { %>
+    <tr>
+      <td><%=gastos[i].fecha %></td>
+      <td><%=gastos[i].propiedad %></td>
+      <td><%=gastos[i].tipoGasto %></td>
+      <td><%=gastos[i].valorGasto.toLocaleString() %></td>
+      <td><%=gastos[i].descripcion %></td>
+
+      <td>
+        <form action="/deleteXpense?id=<%=gastos[i]._id %>" method="post"> 
+          <button onclick="confirmar()" class="btn btn-info text-white" id="myBoton">-</button>
+        </form>
+      </td>
+
+      <td>
+        <form action="/updateXpense?id=<%=gastos[i]._id %> %>" method="post">
+          <button class="btn btn-danger text-white">*</button>
+        </form>
+      </td>
+
+
+      <% } %>
+    </tr>
+  </table>
+
+    <!-- FUNCION DE CONFIRMACION -->
+    <script>
+
+      function confirmar() {
+        let respuesta = confirm('Estas seguro que deseas eliminar definitivamente este gasto')
+        if(respuesta){
+          console.log('vamo a borra')
+        } else{
+          window.location.href('/gastos')
+        }
+      }
+  
+      document.getElementById('myBoton').onclick = confirmar
+    </script>
+</body>
+</html>

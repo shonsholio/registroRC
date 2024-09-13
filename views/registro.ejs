@@ -5,20 +5,35 @@
   <form action="/registrar" method="POST">
     <p>Formulario de Registro</p>
 
-    <label for="nombre">Nombre</label>
-    <input name="nombre">
+    <div class="d-block">
+      <label for="nombre">Nombre</label>
+      <input class="no-border mb-4" name="nombre">
+    </div>
 
-    <label for="celular">Celular</label>
-    <input name="celular">
+    <div class="d-block">
+      <label for="celular">Celular</label>
+      <input class="no-border mb-4" name="celular">
+    </div>
 
-    <label for="email">E-Mail</label>
-    <input name="email">
+    <div class="d-block">
+      <label for="email">E-Mail</label>
+      <input class="no-border mb-4" name="email">
+    </div>
 
-    <label for="pass">Contraseña</label>
-    <input name="pass">
+    <div class="d-block">
+      <label for="apto">Apto(s)</label>
+      <input class="no-border mb-4" name="apto" placeholder="Separarlos por comas">
+    </div>
 
-    <label for="confirmPass">Confirmar contraseña</label>
-    <input name="confirmPass">
+    <div class="d-block">
+      <label for="pass">Contraseña</label>
+      <input class="no-border mb-4" name="pass">
+    </div>
+
+    <div class="d-block">
+      <label for="confirmPass">Confirmar contraseña</label>
+      <input class="no-border mb-4" name="confirmPass">
+    </div>
 
     <button type="submit">Registrar</button>
   </form>

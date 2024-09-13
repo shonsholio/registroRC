@@ -1,0 +1,43 @@
+<%- include('partials/_header') %>
+
+  <a href="/admin">MENU DE ADMIN</a>
+
+  <p>ADMIN USERS</p>
+  <table class="table table-hover mt-3 text-center" >
+    <tr>
+      <th>HOST</th>
+      <th>APTO(S)</th>
+      <th>B</th>
+    </tr>
+
+  <% for (i = 0; i < data.length; ++i) {  %>
+    <tr>
+      <td><%= data[i].nombre %></td>
+      <td><%= data[i].apto %></td>
+      <td>  
+        <form action="/deleteUser?id=<%=data[i]._id %>" method="POST"> 
+        <button onclick="confirmar()" class="btn btn-danger text-white" id="myBoton">-</button>
+        </form>
+      </td>
+    </tr>
+  <% } %>
+  </table>
+
+   <!-- FUNCION DE CONFIRMACION -->
+   <script>
+
+    function confirmar() {
+      let respuesta = confirm('Estas seguro que deseas eliminar definitivamente este usuario')
+      if(respuesta != Aceptar){
+        console.log('vamo a borra')
+      } else{
+        window.location.href('/adminUsers')
+      }
+    }
+
+    document.getElementById('myBoton').onclick = confirmar
+
+  </script>
+
+</body>
+</html> 
